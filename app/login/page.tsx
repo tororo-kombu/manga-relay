@@ -6,7 +6,7 @@ export default function LoginPage() {
     await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
+        redirectTo: `https://manga-relay-git-main-gon-maros-projects.vercel.app/auth/callback`,
       },
     })
   }
