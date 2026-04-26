@@ -114,6 +114,13 @@ export default function NavBar() {
                 </>
               )}
             </div>
+            <div className="menuBttomLink" style={{position: 'absolute', bottom: '20px', fontSize: '16px',lineHeight: '35px'}}>
+              <a href="">漫画リレーについて</a><br/>
+              <a href="">利用ルール</a><br/>
+              <a href="">公式X</a><br/>
+              <a href="">GitHub</a><br/>
+              <a href="">プライバシーポリシー</a>
+            </div>
           </div>
         </div>
       )}
