@@ -104,8 +104,7 @@ export default function NavBar() {
                   </>
                 ) : (
                 <>
-                  <p className="text-sm font-bold text-gray-600">ログインするとコマを投稿できます</p>
-                  <hr style={{ border: '1.5px solid #0a0a0a' }} />
+                  <p className="text-sm font-bold text-gray-600">ログインすると投稿できます</p>
                   <Link href="/login" onClick={() => setMenuOpen(false)}>
                     <button className="btn-manga w-full">ログイン</button>
                   </Link>

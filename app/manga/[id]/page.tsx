@@ -69,7 +69,7 @@ export default async function MangaDetailPage({ params }: { params: Promise<{ id
                       </div>
                     )}
                   </div>
-                  <span className="badge-manga absolute top-2 left-2 z-10">{n}コマ目</span>
+                  <span className="badge-manga absolute top-2 left-2 z-10">{n}</span>
                 </div>
               )
             })}
