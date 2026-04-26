@@ -1,3 +1,4 @@
+export const revalidate = 0
 import { supabase } from '@/lib/supabase'
 import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
