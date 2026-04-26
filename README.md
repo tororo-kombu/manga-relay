@@ -1,36 +1,21 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 漫画リレー について
+漫画リレーは4コマ漫画のコマをリレー形式で作成していく漫画投稿サイトです。
 
-## Getting Started
+## 🔰漫画リレーの使い方
+- 当サービスを利用するにはログインが必要です。ログイン方法はGoogleを使ったログインのみが利用できます。
+- 上部の**募集中**タブには現在コマを投稿出来る漫画が一覧で表示されています。良さげな漫画を選んで続きのページ下部のフォームからコマを投稿してください。
+- 同じ作品には1回しか投稿出来ません。
+- 4コマが集まると**完成作品**タブに移動し一覧からご覧いただけます。
+- リレーで第1走者になりたい方は**新規漫画**タブからタイトルと1コマ目を選択して投稿してください。
+- 自分が過去に投稿したり1から作成した作品は **三** メニューから確認出来ます。
 
-First, run the development server:
+## ⚠️利用上のルール
+- 他人を不快にさせる投稿などの、非常識な投稿は禁止です。
+- 漫画などの無断転載は禁止です。
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🐦️X
+[漫画リレー公式](https://X.com)<br>
+[開発者](https://X.com)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 💬お問い合わせ
+漫画リレー公式XのDMからお願いします
