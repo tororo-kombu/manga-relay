@@ -19,8 +19,6 @@ export default function LoginPage() {
           Googleアカウントでログイン
         </p>
         <button onClick={handleGoogleLogin} className="btn-manga flex items-center justify-center gap-3">
-          <svg width="20" height="20" viewBox="0 0 48 48">
-          </svg>
           Googleでログイン
         </button>
       </div>
