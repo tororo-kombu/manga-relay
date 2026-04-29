@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { endianness } from 'os'
 
 export default function Home() {
   return (
@@ -10,7 +11,7 @@ export default function Home() {
           漫画リレー
         </h1>
         <p className="text-white font-black text-lg md:text-2xl tracking-widest mb-8">
-          みんなで繋ぐ、4コマ漫画。
+          4コマ漫画をみんなで作るぞ！
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link href="/recruiting">
@@ -78,7 +79,7 @@ export default function Home() {
       </section>
 
       {/* ルール */}
-      <section style={{ border: '3px solid #0a0a0a', background: '#f9f9f9', padding: '0 20px 20px 20px', marginTop:'30px' }}
+      <section style={{ border: '3px solid #0a0a0a', background: '#f9f9f9', padding: '0 20px 20px 20px', marginTop:'30px', position: 'relative' }}
         className="px-6 py-16">
         <div className="max-w-3xl mx-auto">
           <h2 className="title-manga text-4xl text-center mb-8">RULES</h2>
@@ -86,7 +87,7 @@ export default function Home() {
             {[
               { icon: '🎨', text: '1人につき1作品に1コマのみ投稿できます' },
               { icon: '📐', text: '画像は16:9の比率で表示されます' },
-              { icon: '🚫', text: '不適切なコンテンツの投稿は禁止です' },
+              { icon: '🚫', text: '非常識なコンテンツの投稿は禁止です' },
               { icon: '🔓', text: '投稿した画像は全ユーザーに公開されます' },
             ].map((rule, i) => (
               <div key={i} className="card-manga p-4 flex gap-3 items-center">
@@ -95,6 +96,10 @@ export default function Home() {
               </div>
             ))}
           </div>
+          <br />
+          <a href="https://github.com/tororo-kombu/manga-relay/blob/main/README.md#%EF%B8%8F%E5%88%A9%E7%94%A8%E4%B8%8A%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB" style={{position:'absolute',right:'15px',bottom:'15px'}} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
+            詳細な利用規則はこちら＞
+          </a>
         </div>
       </section>
 

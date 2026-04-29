@@ -37,9 +37,11 @@ export default function NavBar() {
         {/* ヘッダー */}
         <header style={{ borderBottom: '3px solid #0a0a0a', background: '#efece7', height: '50px'}}
           className="px-4 py-3 flex items-center justify-between">
-          <h2 style={{margin: 'auto', position: 'relative', left: '18px' }}>
-            漫画リレー
-          </h2>
+          <a href="../../../">
+            <h2 style={{margin: '0 0 0 10px'}}>
+              漫画リレー
+            </h2>
+          </a>
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="flex flex-col justify-center items-center gap-1.5 w-10 h-10"
