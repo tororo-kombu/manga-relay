@@ -1,6 +1,11 @@
 import Link from 'next/link'
 import { endianness } from 'os'
 
+export const metadata = {
+    title: '漫画リレー | 4コマ漫画をリレーみんなで作ろう',
+    description: '4コマ漫画をリレー形式で作るためのサービス「漫画リレー」の公式サイトです。1コマ目を投稿して、他のユーザーと一緒に物語を完成させましょう！',
+  };
+
 export default function Home() {
   return (
     <div className="main" style={{ width: '100%', maxWidth: '600px', margin: '120px auto 0 auto'}}>

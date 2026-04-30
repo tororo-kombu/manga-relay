@@ -5,6 +5,19 @@ import { cookies } from 'next/headers'
 import AddPanelForm from '@/components/AddPanelForm'
 import Link from 'next/link'
 
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
+  const { data: manga } = await supabase
+    .from('mangas')
+    .select('title')
+    .eq('id', id)
+    .single()
+
+  return {
+    title: '漫画リレー | 作品 : ' + (manga?.title ?? '作品が見つかりません'),
+  }
+}
+
 export default async function MangaDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
 
@@ -23,7 +36,7 @@ export default async function MangaDetailPage({ params }: { params: Promise<{ id
     .single()
 
   if (!manga) return (
-    <div className="max-w-2xl mx-auto p-6 text-center">
+    <div className="max-w-2xl mx-auto p-6 text-center" style={{margin: '100px'}}>
       <p className="title-manga text-4xl mb-4">NOT FOUND</p>
       <Link href="/recruiting"><button className="btn-manga">一覧に戻る</button></Link>
     </div>

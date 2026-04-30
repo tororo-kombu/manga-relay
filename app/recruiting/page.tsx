@@ -2,6 +2,10 @@ export const revalidate = 0
 import { supabase } from '@/lib/supabase'
 import Link from 'next/link'
 
+export const metadata = {
+    title: '漫画リレー | コマを募集中の漫画一覧',
+  };
+
 export default async function RecruitingPage() {
   const { data: mangas , count} = await supabase
     .from('mangas')
@@ -11,7 +15,6 @@ export default async function RecruitingPage() {
 
   return (
     <div className="main" style={{ width: '100%', maxWidth: '600px', margin: '100px auto 0 auto'}}>
-
       <div className="flex items-center gap-4 mb-6">
         <h1 className="title-manga text-5xl">コマを募集中の漫画</h1>
       </div>

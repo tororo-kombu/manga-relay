@@ -2,6 +2,10 @@ export const revalidate = 0
 import { supabase } from '@/lib/supabase'
 import Link from 'next/link'
 
+export const metadata = {
+    title: '漫画リレー | 完成作品の一覧',
+  };
+
 const PAGE_SIZE = 20
 
 export default async function CompletedPage({
