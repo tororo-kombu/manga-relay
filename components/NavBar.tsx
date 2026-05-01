@@ -121,7 +121,7 @@ export default function NavBar() {
               <a href="https://github.com/tororo-kombu/manga-relay/blob/main/README.md#%EF%B8%8F%E5%88%A9%E7%94%A8%E4%B8%8A%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB">利用ルール</a><br/>
               <a href="">公式X</a><br/>
               <a href="https://github.com/tororo-kombu/manga-relay/tree/main">GitHub</a><br/>
-              <a href="https://github.com/tororo-kombu/manga-relay/blob/main/Privacy-policy.md">プライバシーポリシー</a>
+              <a href="/privacy">プライバシーポリシー</a>
             </div>
           </div>
         </div>
