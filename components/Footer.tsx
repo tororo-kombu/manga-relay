@@ -9,7 +9,7 @@ export default function Footer() {
     }} className="px-6 pt-16 pb-8">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
-          <div className="title-manga text-5xl" style={{color: '#ffffff', fontSize: '25px', margin: '55px 0 15px 0'}}>
+          <div className="title-manga text-5xl" style={{color: '#ffffff', fontSize: '25px', margin: '50px 0 15px 0'}}>
             漫画リレー
           </div>
         </div>
