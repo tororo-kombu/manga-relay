@@ -1,12 +1,21 @@
 import './globals.css'
-import NavBar from '../components/NavBar'
+import NavBar from '@/components/NavBar'
+import Footer from '@/components/Footer'
+
+export const metadata = {
+  title: '漫画リレー',
+  description: 'みんなで繋ぐ、4コマ漫画。',
+}
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja">
-      <body>
+      <body style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
         <NavBar />
-        {children}
+        <main style={{ flex: 1 }}>
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   )
