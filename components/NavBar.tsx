@@ -117,10 +117,9 @@ export default function NavBar() {
               )}
             </div>
             <div className="menuBttomLink" style={{position: 'absolute', bottom: '20px', fontSize: '16px',lineHeight: '35px'}}>
-              <a href="https://github.com/tororo-kombu/manga-relay/blob/main/README.md#%E6%BC%AB%E7%94%BB%E3%83%AA%E3%83%AC%E3%83%BC-%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">漫画リレーについて</a><br/>
               <a href="https://github.com/tororo-kombu/manga-relay/blob/main/README.md#%EF%B8%8F%E5%88%A9%E7%94%A8%E4%B8%8A%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB">利用ルール</a><br/>
               <a href="">公式X</a><br/>
-              <a href="https://github.com/tororo-kombu/manga-relay/tree/main">GitHub</a><br/>
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJt7eMlSbg5kziSnyZ4G9hTW9Kbm7sejY86dYxDTla5g9BVQ/viewform?usp=dialog" target="_blank">お問い合わせ</a><br/>
               <a href="/privacy">プライバシーポリシー</a>
             </div>
           </div>
