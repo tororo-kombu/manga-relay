@@ -18,11 +18,10 @@ export default function Footer() {
           {[
             { href: '/', label: 'トップ' },
             { href: '/login', label: 'ログイン' },
-            { href: '/about', label: '漫画リレーについて' },
-            { href: '/about#rules', label: '投稿のルール' },
+            { href: '/rule', label: '利用ルール' },
             { href: '/privacy', label: 'プライバシーポリシー' },
-            { href: '/contact', label: 'お問い合わせ' },
-            { href: 'https://x.com/', label: '公式X' },
+            { href: 'https://docs.google.com/forms/d/e/1FAIpQLSdJt7eMlSbg5kziSnyZ4G9hTW9Kbm7sejY86dYxDTla5g9BVQ/viewform?usp=dialog', label: 'お問い合わせ' },
+            { href: 'https://x.com/tororo___kombu', label: '公式X' },
           ].map((link) => (
             <Link key={link.href} href={link.href} className="footer-link" style={{color: '#998a6f', margin: '0 4px 0 4px'}}>
               {link.label}
