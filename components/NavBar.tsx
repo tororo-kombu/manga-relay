@@ -47,7 +47,7 @@ export default function NavBar() {
   ]
 
   // headerの高さ分だけ上にずらす (headerHeight: 50px + border: 3px = 53px)
-  const headerOffset = (scrolled && !menuOpen) ? '-53px' : '0px'
+  const headerOffset = (scrolled && !menuOpen) ? '-58px' : '0px'
 
   return (
     <>
