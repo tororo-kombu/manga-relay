@@ -1,12 +1,14 @@
 'use client'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { supabase } from '@/lib/supabase'
 import { useRouter, usePathname } from 'next/navigation'
 
 export default function NavBar() {
   const [user, setUser] = useState<any>(null)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const lastScrollY = useRef(0)
   const router = useRouter()
   const pathname = usePathname()
 
@@ -16,6 +18,20 @@ export default function NavBar() {
       setUser(session?.user ?? null)
     })
     return () => subscription.unsubscribe()
+  }, [])
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentY = window.scrollY
+      if (currentY > lastScrollY.current && currentY > 10) {
+        setScrolled(true)   // 下スクロール → headerを隠す
+      } else {
+        setScrolled(false)  // 上スクロール → 全表示
+      }
+      lastScrollY.current = currentY
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const handleLogout = async () => {
@@ -30,15 +46,29 @@ export default function NavBar() {
     { href: '/create', label: '新規漫画' },
   ]
 
+  // headerの高さ分だけ上にずらす (headerHeight: 50px + border: 3px = 53px)
+  const headerOffset = (scrolled && !menuOpen) ? '-53px' : '0px'
+
   return (
     <>
-      <div style={{position: 'fixed', top: '0', left: '0', zIndex: '100', width: '100%'}}>
+      <div style={{
+        position: 'fixed',
+        top: '8px',
+        left: '8px',
+        right: '8px',
+        zIndex: 100,
+        transform: `translateY(${headerOffset})`,
+        transition: 'transform 0.3s ease',
+        borderRadius: '15px',
+        overflow: 'hidden',
+        boxShadow: '0 4px 15px #00000034',
+      }}>
 
         {/* ヘッダー */}
-        <header style={{ borderBottom: '3px solid #0a0a0a', background: '#efece7', height: '50px'}}
+        <header style={{ background: '#efece7', height: '50px' }}
           className="px-4 py-3 flex items-center justify-between">
           <a href="../../../">
-            <h2 style={{margin: '0 0 0 10px'}}>
+            <h2 style={{ margin: '0 0 0 10px' }}>
               漫画リレー
             </h2>
           </a>
@@ -46,16 +76,16 @@ export default function NavBar() {
             onClick={() => setMenuOpen(!menuOpen)}
             className="flex flex-col justify-center items-center gap-1.5 w-10 h-10"
             aria-label="メニュー"
-            style={{height: '40px',margin: '0 5px 0 0',background: 'none',border: 'none',cursor: 'pointer'}}
+            style={{ height: '40px', margin: '0 10px 0 0', background: 'none', border: 'none', cursor: 'pointer' }}
           >
-            <span style={{display: 'block', width: 24, height: 3, background: '#0a0a0a',position: 'relative',top: '-4px',transition: 'transform 0.2s, opacity 0.2s',transform: menuOpen ? 'translateY(7px) rotate(45deg)' : 'none'}} />
-            <span style={{display: 'block', width: 24, height: 3, background: '#0a0a0a',transition: 'opacity 0.2s',opacity: menuOpen ? 0 : 1}} />
-            <span style={{display: 'block', width: 24, height: 3, background: '#0a0a0a',position: 'relative',top: '4px',transition: 'transform 0.2s, opacity 0.2s',transform: menuOpen ? 'translateY(-7px) rotate(-45deg)' : 'none'}} />
+            <span style={{ display: 'block', width: 24, height: 3, background: '#0a0a0a', position: 'relative', top: '-4px', transition: 'transform 0.2s, opacity 0.2s', transform: menuOpen ? 'translateY(7px) rotate(45deg)' : 'none' }} />
+            <span style={{ display: 'block', width: 24, height: 3, background: '#0a0a0a', transition: 'opacity 0.2s', opacity: menuOpen ? 0 : 1 }} />
+            <span style={{ display: 'block', width: 24, height: 3, background: '#0a0a0a', position: 'relative', top: '4px', transition: 'transform 0.2s, opacity 0.2s', transform: menuOpen ? 'translateY(-7px) rotate(-45deg)' : 'none' }} />
           </button>
         </header>
 
         {/* タブナビゲーション */}
-        <nav style={{ borderBottom: '3px solid #0a0a0a', background: '#00000000'}}
+        <nav style={{backgroundColor: '#efece7' }}
           className="flex">
           {tabs.map((tab) => {
             const isActive = pathname === tab.href
@@ -64,7 +94,7 @@ export default function NavBar() {
                 style={{
                   background: isActive ? '#0a0a0a' : '#efece7',
                   color: isActive ? '#fff' : '#0a0a0a',
-                  textDecoration: 'none'
+                  textDecoration: 'none',
                 }}>
                 {tab.label}
               </Link>
@@ -78,33 +108,30 @@ export default function NavBar() {
       {menuOpen && (
         <div style={{
           position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, zIndex: 50,
-          background: '#7a6a5038',
-          backdropFilter: 'blur(3px)',
         }} onClick={() => setMenuOpen(false)}>
           <div style={{
-            position: 'absolute', top: 0, right: 0, width: 260,
-            height: '100%', background: '#efece7',
-            borderLeft: '3px solid #0a0a0a',
-            padding: '80px 24px 24px'
+            position: 'absolute', bottom: '12px', right: '10px', width: 260,
+            height: 'calc(100% - 104px)',
+            borderRadius: '15px',
+            background: '#efece7',
+            padding: '20px 24px 24px',
+            boxShadow: '0 4px 15px #00000034',
           }} onClick={(e) => e.stopPropagation()}>
-            <button onClick={() => setMenuOpen(false)}
-              style={{ position: 'absolute', top: 16, right: 16, fontSize: 24, fontWeight: 900, lineHeight: 1 }}>
-              ✕
-            </button>
+
             <div className="flex flex-col gap-4">
-                {user ? (
-                  <>
-                    <div style={{height: '10px'}}></div>
-                    <p className="text-xs text-gray-500 font-bold break-all">{user.email}</p>
-                    <Link href="/history" onClick={() => setMenuOpen(false)}>
-                      <button className="btn-manga-outline w-full">投稿履歴</button>
-                    </Link>
-                    <div style={{height: '10px'}}></div>
-                    <button onClick={handleLogout} className="btn-manga w-full">
-                      ログアウト
-                    </button>
-                  </>
-                ) : (
+              {user ? (
+                <>
+                  <div style={{ height: '10px' }}></div>
+                  <p className="text-xs text-gray-500 font-bold break-all">{user.email}</p>
+                  <Link href="/history" onClick={() => setMenuOpen(false)}>
+                    <button className="btn-manga-outline w-full">投稿履歴</button>
+                  </Link>
+                  <div style={{ height: '10px' }}></div>
+                  <button onClick={handleLogout} className="btn-manga w-full">
+                    ログアウト
+                  </button>
+                </>
+              ) : (
                 <>
                   <p className="text-sm font-bold text-gray-600">ログインすると投稿できます</p>
                   <Link href="/login" onClick={() => setMenuOpen(false)}>
@@ -116,10 +143,10 @@ export default function NavBar() {
                 </>
               )}
             </div>
-            <div className="menuBttomLink" style={{position: 'absolute', bottom: '20px', fontSize: '16px',lineHeight: '35px'}}>
-              <a href="/rule">利用ルール</a><br/>
-              <a href="https://x.com/tororo___kombu" target="_blank">公式X</a><br/>
-              <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJt7eMlSbg5kziSnyZ4G9hTW9Kbm7sejY86dYxDTla5g9BVQ/viewform?usp=dialog" target="_blank">お問い合わせ</a><br/>
+            <div className="menuBttomLink" style={{ position: 'absolute', bottom: '20px', fontSize: '16px', lineHeight: '35px' }}>
+              <a href="/rule">利用ルール</a><br />
+              <a href="https://x.com/tororo___kombu" target="_blank">公式X</a><br />
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJt7eMlSbg5kziSnyZ4G9hTW9Kbm7sejY86dYxDTla5g9BVQ/viewform?usp=dialog" target="_blank">お問い合わせ</a><br />
               <a href="/privacy">プライバシーポリシー</a>
             </div>
           </div>
