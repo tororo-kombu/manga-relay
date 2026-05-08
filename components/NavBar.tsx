@@ -46,26 +46,28 @@ export default function NavBar() {
     { href: '/create', label: '新規漫画' },
   ]
 
-  // headerの高さ分だけ上にずらす (headerHeight: 50px + border: 3px = 53px)
-  const headerOffset = (scrolled && !menuOpen) ? '-58px' : '0px'
+  // headerの高さ分だけ上にずらす
+  const headerOffset = (scrolled && !menuOpen) ? '-54px' : '0px'
 
   return (
     <>
       <div style={{
         position: 'fixed',
         top: '8px',
-        left: '8px',
-        right: '8px',
+        left: headerOffset === '0px' ? '8px' : '0px',
+        right: headerOffset === '0px' ? '8px' : '0px',
         zIndex: 100,
         transform: `translateY(${headerOffset})`,
-        transition: 'transform 0.3s ease',
-        borderRadius: '15px',
+        transition: '0.3s ease',
+        borderRadius: '20px',
         overflow: 'hidden',
         boxShadow: '0 4px 15px #00000034',
+        backgroundColor: '#efece76c',
+        backdropFilter: 'blur(3px) contrast(0.4) brightness(1.4) saturate(2.0)',
       }}>
 
         {/* ヘッダー */}
-        <header style={{ background: '#efece7', height: '50px' }}
+        <header style={{height: '50px' }}
           className="px-4 py-3 flex items-center justify-between">
           <a href="../../../">
             <h2 style={{ margin: '0 0 0 10px' }}>
@@ -78,23 +80,23 @@ export default function NavBar() {
             aria-label="メニュー"
             style={{ height: '40px', margin: '0 10px 0 0', background: 'none', border: 'none', cursor: 'pointer' }}
           >
-            <span style={{ display: 'block', width: 24, height: 3, background: '#0a0a0a', position: 'relative', top: '-4px', transition: 'transform 0.2s, opacity 0.2s', transform: menuOpen ? 'translateY(7px) rotate(45deg)' : 'none' }} />
-            <span style={{ display: 'block', width: 24, height: 3, background: '#0a0a0a', transition: 'opacity 0.2s', opacity: menuOpen ? 0 : 1 }} />
-            <span style={{ display: 'block', width: 24, height: 3, background: '#0a0a0a', position: 'relative', top: '4px', transition: 'transform 0.2s, opacity 0.2s', transform: menuOpen ? 'translateY(-7px) rotate(-45deg)' : 'none' }} />
+            <span style={{ display: 'block', width: 24, height: 3, borderRadius: '9px', background: '#0a0a0a', position: 'relative', top: '-4px', transition: 'transform 0.2s, opacity 0.2s', transform: menuOpen ? 'translateY(7px) rotate(45deg)' : 'none' }} />
+            <span style={{ display: 'block', width: 24, height: 3, borderRadius: '9px', background: '#0a0a0a', transition: 'opacity 0.2s', opacity: menuOpen ? 0 : 1 }} />
+            <span style={{ display: 'block', width: 24, height: 3, borderRadius: '9px', background: '#0a0a0a', position: 'relative', top: '4px', transition: 'transform 0.2s, opacity 0.2s', transform: menuOpen ? 'translateY(-7px) rotate(-45deg)' : 'none' }} />
           </button>
         </header>
 
         {/* タブナビゲーション */}
-        <nav style={{backgroundColor: '#efece7' }}
+        <nav style={{}}
           className="flex">
           {tabs.map((tab) => {
             const isActive = pathname === tab.href
             return (
               <Link key={tab.href} href={tab.href} className="flex-1 text-center py-3 font-bold text-sm tracking-widest transition-colors"
                 style={{
-                  background: isActive ? '#0a0a0a' : '#efece7',
-                  color: isActive ? '#fff' : '#0a0a0a',
+                  color: '#0a0a0a',
                   textDecoration: 'none',
+                  borderBottom: isActive ? '3px solid #0a0a0a' : '3px solid #0a0a0a00',
                 }}>
                 {tab.label}
               </Link>
@@ -105,53 +107,54 @@ export default function NavBar() {
       </div>
 
       {/* ハンバーガーメニュー */}
-      {menuOpen && (
+      <div style={{
+        position: 'fixed', top: 0, right: 0, bottom: 0, zIndex: 50, width: menuOpen ? '100vw' : '0',
+      }} onClick={() => setMenuOpen(false)}>
         <div style={{
-          position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, zIndex: 50,
-        }} onClick={() => setMenuOpen(false)}>
-          <div style={{
-            position: 'absolute', bottom: '12px', right: '10px', width: 260,
-            height: 'calc(100% - 104px)',
-            borderRadius: '15px',
-            background: '#efece7',
-            padding: '20px 24px 24px',
-            boxShadow: '0 4px 15px #00000034',
-          }} onClick={(e) => e.stopPropagation()}>
+          transform: menuOpen ? 'translateX(0px)' : 'translateX(280px)',
+          transition: '0.4s cubic-bezier(0.48, 0.12, 0.09, 1)',
+          position: 'absolute', bottom: '12px', right: '10px', width: 260,
+          height: 'calc(100% - 104px)',
+          borderRadius: '15px',
+          backgroundColor: '#efece7b8',
+          backdropFilter: 'blur(3px) contrast(0.4) brightness(1.4) saturate(2.0)',
+          padding: '20px 24px 24px',
+          boxShadow: '0 4px 15px #00000034',
+        }} onClick={(e) => e.stopPropagation()}>
 
-            <div className="flex flex-col gap-4">
-              {user ? (
-                <>
-                  <div style={{ height: '10px' }}></div>
-                  <p className="text-xs text-gray-500 font-bold break-all">{user.email}</p>
-                  <Link href="/history" onClick={() => setMenuOpen(false)}>
-                    <button className="btn-manga-outline w-full">投稿履歴</button>
-                  </Link>
-                  <div style={{ height: '10px' }}></div>
-                  <button onClick={handleLogout} className="btn-manga w-full">
-                    ログアウト
-                  </button>
-                </>
-              ) : (
-                <>
-                  <p className="text-sm font-bold text-gray-600">ログインすると投稿できます</p>
-                  <Link href="/login" onClick={() => setMenuOpen(false)}>
-                    <button className="btn-manga w-full">ログイン</button>
-                  </Link>
-                  <Link href="/login" onClick={() => setMenuOpen(false)}>
-                    <button className="btn-manga-outline w-full">新規登録</button>
-                  </Link>
-                </>
-              )}
-            </div>
-            <div className="menuBttomLink" style={{ position: 'absolute', bottom: '20px', fontSize: '16px', lineHeight: '35px' }}>
-              <a href="/rule">利用ルール</a><br />
-              <a href="https://x.com/tororo___kombu" target="_blank">公式X</a><br />
-              <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJt7eMlSbg5kziSnyZ4G9hTW9Kbm7sejY86dYxDTla5g9BVQ/viewform?usp=dialog" target="_blank">お問い合わせ</a><br />
-              <a href="/privacy">プライバシーポリシー</a>
-            </div>
+          <div className="flex flex-col gap-4">
+            {user ? (
+              <>
+                <div style={{ height: '10px' }}></div>
+                <p className="text-xs text-gray-500 font-bold break-all">{user.email}</p>
+                <Link href="/history" onClick={() => setMenuOpen(false)}>
+                  <button className="btn-manga-outline w-full">投稿履歴</button>
+                </Link>
+                <div style={{ height: '10px' }}></div>
+                <button onClick={handleLogout} className="btn-manga w-full">
+                  ログアウト
+                </button>
+              </>
+            ) : (
+              <>
+                <p className="text-sm font-bold text-gray-600">ログインすると投稿できます</p>
+                <Link href="/login" onClick={() => setMenuOpen(false)}>
+                  <button className="btn-manga w-full">ログイン</button>
+                </Link>
+                <Link href="/login" onClick={() => setMenuOpen(false)}>
+                  <button className="btn-manga-outline w-full">新規登録</button>
+                </Link>
+              </>
+            )}
+          </div>
+          <div className="menuBttomLink" style={{ position: 'absolute', bottom: '20px', fontSize: '16px', lineHeight: '35px' }}>
+            <a href="/rule">利用ルール</a><br />
+            <a href="https://x.com/tororo___kombu" target="_blank">公式X</a><br />
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJt7eMlSbg5kziSnyZ4G9hTW9Kbm7sejY86dYxDTla5g9BVQ/viewform?usp=dialog" target="_blank">お問い合わせ</a><br />
+            <a href="/privacy">プライバシーポリシー</a>
           </div>
         </div>
-      )}
+      </div>
     </>
   )
 }
