@@ -51,7 +51,6 @@ export default function AddPanelForm({ mangaId, panelOrder }: { mangaId: string;
 
   return (
     <div className="card-manga p-6">
-      <h2 className="title-manga text-2xl mb-4">{panelOrder}コマ目を投稿</h2>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         {preview && (
           <div className="panel-frame" style={{borderWidth: '3px 3px 0 3px'}}>

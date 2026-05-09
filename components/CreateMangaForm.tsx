@@ -59,6 +59,18 @@ export default function CreateMangaForm() {
   return (
     <div className="max-w-lg mx-auto p-6" style={{width: '100%', maxWidth: '600px', margin: '120px auto 0px'}}>
       <h1 className="title-manga text-5xl mb-6">新しい漫画を作成</h1>
+        <div className="p-6 flex flex-col gap-6">
+        {/* ルール */}
+        <div style={{marginTop: '-15px'}} className="p-4">
+          <p className="font-black text-sm tracking-widest mb-3">📋 投稿ルール</p>
+          <ul className="flex flex-col gap-2" style={{margin: '-10px 0 20px -20px'}}>
+            <li className="text-sm font-bold flex gap-2">・1作品につき1コマのみ投稿できます</li>
+            <li className="text-sm font-bold flex gap-2">・画像は16:9の比率で表示されます</li>
+            <li className="text-sm font-bold flex gap-2">・不適切(他人を明らかに不快にさせるなど)なコンテンツの投稿は禁止です</li>
+            <li className="text-sm font-bold flex gap-2">・投稿した画像は原則で削除出来ません</li>
+          </ul>
+        </div>
+      </div>
       <div className="card-manga p-6">
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div>

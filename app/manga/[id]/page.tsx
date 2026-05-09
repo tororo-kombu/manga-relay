@@ -3,6 +3,7 @@ import { supabase } from '@/lib/supabase'
 import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 import AddPanelForm from '@/components/AddPanelForm'
+import PanelModal from '@/components/PanelModal'
 import Link from 'next/link'
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
@@ -102,7 +103,7 @@ export default async function MangaDetailPage({ params }: { params: Promise<{ id
             <p className="text-sm font-bold text-gray-600">この作品にはすでにコマを投稿済みです</p>
           </div>
         ) : (
-          <AddPanelForm mangaId={manga.id} panelOrder={nextOrder} />
+          <PanelModal mangaId={manga.id} panelOrder={nextOrder} />
         )}
       </div>
       <div id='bottom' style={{height:'80px'}}></div>
