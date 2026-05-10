@@ -55,6 +55,7 @@ export default function NavBar() {
         left: '8px',
         right: '8px',
         zIndex: 100,
+        height:  scrolled && !menuOpen ? '30px' : '80px',
         overflow: 'hidden',
         transition: '0.3s ease',
         borderRadius: '15px',
@@ -66,7 +67,9 @@ export default function NavBar() {
         {/* ヘッダー */}
         <header style={{
           height: '50px',
-          display: scrolled && !menuOpen ? 'none' : 'flex'
+          position: 'relative',
+          top:  scrolled && !menuOpen ? '-50px' : '0',
+          transition: '0.3s ease',
         }} className="px-4 py-3 flex items-center justify-between">
           <a href="../../../">
             <h2 style={{margin: '0 0 0 10px', }}>
@@ -86,7 +89,7 @@ export default function NavBar() {
         </header>
 
         {/* タブナビゲーション */}
-        <nav style={{}}
+        <nav style={{position: 'relative', top:  scrolled && !menuOpen ? '-50px' : '0',transition: '0.3s ease'}}
           className="flex">
           {tabs.map((tab) => {
             const isActive = pathname === tab.href
