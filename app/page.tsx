@@ -13,7 +13,7 @@ export default function Home() {
       <section style={{}}
         className="px-6 py-20 text-center">
         <h1 className="title-manga text-7xl md:text-9xl text-white mb-4">
-          漫画リレー
+          漫画リレー <span style={{ fontSize: '15px', color: '#000000a6' }}>(仮)</span>
         </h1>
         <p className="text-white font-black text-lg md:text-2xl tracking-widest mb-8">
           4コマ漫画をみんなで作るぞ！
@@ -46,7 +46,7 @@ export default function Home() {
             </div>
             <div>
               <h3 className="font-black text-xl mb-2" style={{margin:"14px 0 -5px 0"}}>1コマ目を投稿する</h3>
-              <p className="text-gray-600 font-bold leading-relaxed">
+              <p className="text-gray-600 font-bold leading-relaxed" style={{fontSize:'15px'}}>
                 あなたのアイデアで物語をスタート。タイトルをつけて1コマ目の画像を投稿すると、あなたの作品が募集中の一覧に表示されます。
               </p>
             </div>
@@ -60,7 +60,7 @@ export default function Home() {
             </div>
             <div>
               <h3 className="font-black text-xl mb-2" style={{margin:"14px 0 -5px 0"}}>続きを他のユーザーが描く</h3>
-              <p className="text-gray-600 font-bold leading-relaxed">
+              <p className="text-gray-600 font-bold leading-relaxed" style={{fontSize:'15px'}}>
                 募集中の作品に、他のユーザーが2・3コマ目を投稿していきます。1人1作品につき1コマまで投稿できます。どんな展開になるかはお楽しみ！
               </p>
             </div>
@@ -74,7 +74,7 @@ export default function Home() {
             </div>
             <div>
               <h3 className="font-black text-xl mb-2" style={{margin:"14px 0 -5px 0"}}>4コマ揃ったら完成！</h3>
-              <p className="text-gray-600 font-bold leading-relaxed">
+              <p className="text-gray-600 font-bold leading-relaxed" style={{fontSize:'15px'}}>
                 4人のユーザーによって4コマが揃うと作品が完成。完成作品ページに掲載され、誰でも閲覧できるようになります。
               </p>
             </div>
@@ -102,12 +102,12 @@ export default function Home() {
             ))}
           </div>
           <br />
-          <a href="https://github.com/tororo-kombu/manga-relay/blob/main/README.md#%EF%B8%8F%E5%88%A9%E7%94%A8%E4%B8%8A%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB" style={{position:'absolute',right:'15px',bottom:'15px'}} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
-            詳細な利用規則はこちら＞
+          <a href="/rule" style={{position:'absolute',right:'15px',bottom:'15px'}} rel="noopener noreferrer" className="text-blue-500 hover:underline">
+            詳細な利用ルールはこちら＞
           </a>
         </div>
       </section>
-
+      
       <div style={{height:'80px'}}></div>
     </div>
   )

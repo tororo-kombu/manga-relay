@@ -73,7 +73,7 @@ export default function NavBar() {
         }} className="px-4 py-3 flex items-center justify-between">
           <a href="../../../">
             <h2 style={{margin: '0 0 0 10px', }}>
-              漫画リレー
+              漫画リレー <span style={{ fontSize: '15px', color: '#000000a6' }}>(仮)</span>
             </h2>
           </a>
           <button
