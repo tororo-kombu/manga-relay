@@ -5,12 +5,13 @@ import { cookies } from 'next/headers'
 import AddPanelForm from '@/components/AddPanelForm'
 import PanelModal from '@/components/PanelModal'
 import Link from 'next/link'
+import LikeButton from '@/components/LikeButton'
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
   const { data: manga } = await supabase
     .from('mangas')
-    .select('title')
+    .select('*, panels(*), likes')
     .eq('id', id)
     .single()
 
@@ -64,7 +65,6 @@ export default async function MangaDetailPage({ params }: { params: Promise<{ id
       <div className="max-w-3xl mx-auto p-6">
         <div className="flex items-center gap-3 mb-6" style={{display:'block', textAlign:'center'}}>
           <h1 className="title-manga text-4xl">{manga.title}</h1>
-          {isCompleted && <span className="badge-manga">COMPLETE!</span>}
         </div>
 
         <div className="card-manga p-4 mb-6">
@@ -90,22 +90,28 @@ export default async function MangaDetailPage({ params }: { params: Promise<{ id
           </div>
         </div>
 
+        {isCompleted && (
+          <div style={{position:'sticky', bottom:'10px', zIndex:10, width:'100%',display:'flex', gap: '5px',}}>
+            <div className='btn-manga' style={{width:'100%',backgroundColor: '#0a0a0a', cursor: 'auto',fontSize: '13px',textAlign: 'center',opacity: '0.5',}}>この作品は完成済みです</div>
+            <LikeButton mangaId={manga.id} initialLikes={manga.likes} />
+          </div>
+        )}
 
         {isCompleted ? (
           <div className="card-manga p-6 text-center">
             <p className="title-manga text-3xl mb-2">COMPLETE!</p>
             <p className="text-sm font-bold text-gray-600 mb-4">この作品は完成しました</p>
-            <Link href="/completed"><button className="btn-manga">完成作品を見る</button></Link>
+            <Link href="/recruiting"><button className="btn-manga">募集中の作品を見る</button></Link>
           </div>
-        ) : alreadyPosted ? (
-          <div className="card-manga p-6 text-center">
-            <p className="title-manga text-2xl mb-2">POSTED!</p>
-            <p className="text-sm font-bold text-gray-600">この作品にはすでにコマを投稿済みです</p>
-          </div>
+          
         ) : (
-          <PanelModal mangaId={manga.id} panelOrder={nextOrder} />
+          <div style={{position:'sticky', bottom:'10px', zIndex:10, display:'flex', gap:'5px',}}>
+            <PanelModal mangaId={manga.id} panelOrder={nextOrder} />
+            <LikeButton mangaId={manga.id} initialLikes={manga.likes} />
+          </div>
         )}
       </div>
+
       <div id='bottom' style={{height:'80px'}}></div>
     </div>
   )
