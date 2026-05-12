@@ -11,13 +11,17 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   const { id } = await params
   const { data: manga } = await supabase
     .from('mangas')
-    .select('*, panels(*), likes')
+    .select('title, is_deleted')
     .eq('id', id)
-    .eq('is_deleted', false)
     .single()
 
   return {
     title: '漫画リレー | 作品 : ' + (manga?.title ?? '作品が見つかりません'),
+    ...(manga?.is_deleted && {
+      robots: {
+        index: false,
+      }
+    })
   }
 }
 
