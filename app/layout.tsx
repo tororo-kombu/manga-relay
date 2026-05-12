@@ -5,6 +5,9 @@ import Footer from '@/components/Footer'
 export const metadata = {
   title: '漫画リレー',
   description: 'みんなで繋ぐ、4コマ漫画。',
+  verification: {
+    google: '<meta name="google-site-verification" content="YwdHxIYnKwheY2EPSQ2XH7u_wHdURqqL7cVOS9--zgw" />',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
