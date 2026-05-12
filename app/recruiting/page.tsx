@@ -18,6 +18,7 @@ export default async function RecruitingPage() {
     <div className="main" style={{ width: '100%', maxWidth: '600px', margin: '100px auto 0 auto'}}>
       <div className="flex items-center gap-4 mb-6">
         <h1 className="title-manga text-5xl">コマを募集中の漫画</h1>
+        <span className="badge-manga text-lg" style={{position: 'relative',left: '10px'}}>{mangas?.length ?? 0}作品</span>
       </div>
 
       <div className="max-w-2xl mx-auto">

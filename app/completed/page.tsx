@@ -36,12 +36,6 @@ export default async function CompletedPage({
           <span className="badge-manga text-lg" style={{position: 'relative',left: '10px'}}>{count ?? 0}作品</span>
         </div>
 
-        {(!mangas || mangas.length === 0) && (
-          <div className="card-manga p-12 text-center">
-            <p className="title-manga text-3xl mb-2">NO WORKS YET</p>
-            <p className="text-sm text-gray-500 font-bold">まだ完成作品はありません</p>
-          </div>
-        )}
 
         <div className="grid grid-cols-2 gap-4" style={{display:'block'}}>
           {mangas?.map((manga: any) => {
