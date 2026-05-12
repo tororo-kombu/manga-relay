@@ -7,10 +7,11 @@ export const metadata = {
   };
 
 export default async function RecruitingPage() {
-  const { data: mangas , count} = await supabase
+  const { data: mangas } = await supabase
     .from('mangas')
     .select('*, panels(panel_order, image_url)')
     .eq('status', 'recruiting')
+    .eq('is_deleted', false)
     .order('created_at', { ascending: false })
 
   return (

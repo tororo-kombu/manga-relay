@@ -22,8 +22,9 @@ export default async function HistoryPage() {
 
   const { data: history } = await supabase
     .from('user_panel_history')
-    .select('*, mangas(id, title, status, panels(panel_order, image_url))')
+    .select('*, mangas(id, title, status, is_deleted, panels(panel_order, image_url))')
     .eq('user_id', user.id)
+    .eq('mangas.is_deleted', false)
     .order('created_at', { ascending: false })
 
   return (
@@ -39,7 +40,7 @@ export default async function HistoryPage() {
         )}
 
         <div className="flex flex-col gap-4">
-          {history?.map((h: any) => {
+          {history?.filter((h: any) => h.mangas !== null).map((h: any) => {
             const manga = h.mangas
             const panels = manga.panels.sort((a: any, b: any) => a.panel_order - b.panel_order)
             const myPanel = panels.find((p: any) => p.panel_order === h.panel_order)

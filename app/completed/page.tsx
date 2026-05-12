@@ -22,6 +22,7 @@ export default async function CompletedPage({
     .from('mangas')
     .select('id, title, panels(panel_order, image_url)', { count: 'exact' })
     .eq('status', 'completed')
+    .eq('is_deleted', false)
     .order('created_at', { ascending: false })
     .range(from, to)
 

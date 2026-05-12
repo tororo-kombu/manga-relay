@@ -13,6 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
     .from('mangas')
     .select('*, panels(*), likes')
     .eq('id', id)
+    .eq('is_deleted', false)
     .single()
 
   return {
