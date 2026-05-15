@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { endianness } from 'os'
 
 export const metadata = {
-    title: '漫画リレー | 4コマ漫画をリレーみんなで作ろう',
+    title: '漫画リレー | 4コマ漫画をリレー形式で作ろう･リレー漫画',
     description: '4コマ漫画をリレー形式で作るためのサービス「漫画リレー」の公式サイトです。1コマ目を投稿して、他のユーザーと一緒に物語を完成させましょう！',
   };
 
@@ -107,6 +107,22 @@ export default function Home() {
           </a>
         </div>
       </section>
+
+      <div style={{}}>
+        <h2 className="title-manga text-4xl mb-8" style={{color:'#0a0a0a',fontSize:'25px',margin: '40px 0 5px 0'}}>一人Q&A</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {[
+            { question: '絵が下手でもいいですか', answer: 'もちろんOKです。' },
+            { question: 'AI生成による画像を投稿してもいいですか', answer: 'ルールを守っていればOKです。' },
+            { question: '漫画形式の画像でなくても良いですか', answer: '良いと思います。' },
+          ].map((qa, i) => (
+            <div key={i} className="card-manga p-4">
+              <h3 className="font-black text-lg mb-2">Q | {qa.question}</h3>
+              <p className="text-gray-600 font-bold text-sm" style={{margin: '-5px 0 10px 20px'}}>{qa.answer}</p>
+            </div>
+          ))}
+        </div>
+      </div>
       
       <div style={{height:'80px'}}></div>
     </div>
