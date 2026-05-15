@@ -115,6 +115,7 @@ export default function Home() {
             { question: '絵が下手でもいいですか', answer: 'もちろんOKです。' },
             { question: 'AI生成による画像を投稿してもいいですか', answer: 'ルールを守っていればOKです。' },
             { question: '漫画形式の画像でなくても良いですか', answer: '良いと思います。' },
+            { question: '対応している画像形式は？', answer: '画像系なら大体行けますが、推奨はpng,jpegです。' },
           ].map((qa, i) => (
             <div key={i} className="card-manga p-4">
               <h3 className="font-black text-lg mb-2">Q | {qa.question}</h3>
