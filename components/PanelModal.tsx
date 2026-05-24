@@ -24,7 +24,7 @@ export default function PanelModal({ mangaId, panelOrder }: { mangaId: string; p
           <div
             style={{
               boxShadow: '0 4px 15px #00000034',
-              backgroundColor: '#efece7',
+              backgroundColor: '#ffffff',
               width: '100%',
               maxWidth: 480,
               maxHeight: '90vh',

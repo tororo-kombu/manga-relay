@@ -37,7 +37,7 @@ export default function LikeButton({ mangaId, initialLikes }: { mangaId: string;
       <button
         onClick={handleLike}
         className="btn-manga"
-        style={liked ? { background: '#ff4775', cursor: 'not-allowed', minWidth: '150px' } : {background: '#efece7',color: '#0a0a0a',minWidth: '150px'}}
+        style={liked ? { background: '#ff4775', cursor: 'not-allowed', minWidth: '150px' } : {background: '#ffffff',color: '#0a0a0a',minWidth: '150px'}}
       >
         <span style={{ fontSize: '1.2rem' }}>{liked ? '♥' : <span style={{ fontSize: '14px' }}>♡</span>}</span>
         いいね

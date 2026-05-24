@@ -5,7 +5,7 @@
 
 :root {
   --ink: #0a0a0a;
-  --paper: #efece7;
+  --paper: #ffffff;
   --border: 2px solid #0a0a0a;
   --shadow: 4px 4px 0px #0a0a0a;
   --shadow-lg: 6px 6px 0px #0a0a0a;
@@ -24,7 +24,7 @@ body {
   background-color: var(--paper);
   color: var(--ink);
   font-family: "Shippori Antique B1", sans-serif;
-  background-image: radial-gradient(circle, #ddd7cb 1px, transparent 1px);
+  background-image: radial-gradient(circle, #eeeae5 1px, transparent 1px);
   background-size: 10px 10px;
 }
 

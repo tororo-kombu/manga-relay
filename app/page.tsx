@@ -84,7 +84,7 @@ export default function Home() {
       </section>
 
       {/* ルール */}
-      <section style={{ border: '3px solid #0a0a0a', background: '#f9f9f9', padding: '0 20px 20px 20px', marginTop:'30px', position: 'relative' }}
+      <section style={{ border: '3px solid #0a0a0a00', background: '#f7f4ee9f', padding: '0 20px 20px 20px', marginTop:'30px', position: 'relative' }}
         className="px-6 py-16">
         <div className="max-w-3xl mx-auto">
           <h2 className="title-manga text-4xl text-center mb-8">RULES</h2>

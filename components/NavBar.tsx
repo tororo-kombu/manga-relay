@@ -60,7 +60,7 @@ export default function NavBar() {
         transition: '0.3s ease',
         borderRadius: '15px',
         boxShadow: '0 4px 15px #00000034',
-        backgroundColor: '#efece783',
+        backgroundColor: '#ffffff83',
         backdropFilter: 'blur(5px) contrast(0.4) brightness(1.4) saturate(2.0)',
       }}>
 
@@ -115,11 +115,11 @@ export default function NavBar() {
         <div style={{
           transform: menuOpen ? 'translateX(0px)' : 'translateX(280px)',
           transition: '0.4s cubic-bezier(0.48, 0.12, 0.09, 1)',
-          position: 'fixed', bottom: '12px', right: '10px', width: 260,
+          position: 'fixed', bottom: '12px', right: '8px', width: 260,
           height: 'calc(100% - 108px)',
           borderRadius: '15px',
           boxShadow: '0 4px 15px #00000034',
-          backgroundColor: '#efece783',
+          backgroundColor: '#ffffff83',
           backdropFilter: 'blur(5px) contrast(0.4) brightness(1.4) saturate(2.0)',
           padding: '20px 24px 24px',
         }} onClick={(e) => e.stopPropagation()}>
@@ -141,19 +141,22 @@ export default function NavBar() {
               <>
                 <p className="text-sm font-bold text-gray-600">ログインすると投稿できます</p>
                 <Link href="/login" onClick={() => setMenuOpen(false)}>
-                  <button className="btn-manga w-full">ログイン</button>
-                </Link>
-                <Link href="/login" onClick={() => setMenuOpen(false)}>
-                  <button className="btn-manga-outline w-full">新規登録</button>
+                  <button className="btn-manga w-full">ログイン･サインイン</button>
                 </Link>
               </>
             )}
           </div>
           <div className="menuBttomLink" style={{ position: 'absolute', bottom: '20px', fontSize: '16px', lineHeight: '35px' }}>
-            <a href="/rule">利用ルール</a><br />
-            <a href="https://x.com/tororo___kombu" target="_blank">公式X</a><br />
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJt7eMlSbg5kziSnyZ4G9hTW9Kbm7sejY86dYxDTla5g9BVQ/viewform?usp=dialog" target="_blank">お問い合わせ</a><br />
-            <a href="/privacy">プライバシーポリシー</a>
+            {[
+              { href:'/rule', label:'利用ルール', target:''},
+              { href:'/privacy', label:'プライバシーポリシー', target:''},
+              { href:'https://x.com/tororo___kombu', label:'開発者のX', target:'_brank'},
+              { href:'https://github.com/tororo-kombu/manga-relay', label:'Github', target:'_brank'},
+            ].map((qa, i) => (
+              <div key={i}>
+                <a href={qa.href} target={qa.target}>{qa.label}</a><br/>
+              </div>
+            ))}
           </div>
         </div>
       </div>
