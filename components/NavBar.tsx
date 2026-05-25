@@ -62,6 +62,7 @@ export default function NavBar() {
         boxShadow: '0 4px 15px #00000034',
         backgroundColor: '#ffffff83',
         backdropFilter: 'blur(5px) contrast(0.4) brightness(1.4) saturate(2.0)',
+        fontFamily: "Noto Sans JP",
       }}>
 
         {/* ヘッダー */}
@@ -72,7 +73,7 @@ export default function NavBar() {
           transition: '0.3s ease',
         }} className="px-4 py-3 flex items-center justify-between">
           <a href="../../../">
-            <h2 style={{margin: '0 0 0 10px', }}>
+            <h2 style={{margin: '0 0 0 10px', fontFamily: "Noto Sans JP", fontWeight:800}}>
               漫画リレー <span style={{ fontSize: '15px', color: '#000000a6' }}>(仮)</span>
             </h2>
           </a>
@@ -99,6 +100,7 @@ export default function NavBar() {
                   textDecoration: 'none',
                   borderBottom: isActive ? '3px solid #0a0a0a' : '3px solid transparent',
                   paddingTop: '3px',
+                  fontWeight: "500"
                 }}>
                 {tab.label}
               </Link>
@@ -110,7 +112,7 @@ export default function NavBar() {
 
       {/* ハンバーガーメニュー */}
       <div style={{
-        position: 'fixed', top: 90, right: 0, bottom: 0, zIndex: 110, width: menuOpen ? '100vw' : '0',
+        position: 'fixed', top: 90, right: 0, bottom: 0, zIndex: 110, width: menuOpen ? '100vw' : '0',fontFamily: "Noto Sans JP",fontWeight: "500"
       }} onClick={() => setMenuOpen(false)}>
         <div style={{
           transform: menuOpen ? 'translateX(0px)' : 'translateX(280px)',

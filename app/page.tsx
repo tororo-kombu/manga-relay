@@ -12,7 +12,7 @@ export default function Home() {
       {/* ヒーローセクション */}
       <section style={{}}
         className="px-6 py-20 text-center">
-        <h1 className="title-manga text-7xl md:text-9xl text-white mb-4">
+        <h1 className="title-manga text-7xl md:text-9xl text-white mb-4" style={{fontFamily: "Noto Sans JP", fontWeight:600}}>
           漫画リレー <span style={{ fontSize: '15px', color: '#000000a6' }}>(仮)</span>
         </h1>
         <p className="text-white font-black text-lg md:text-2xl tracking-widest mb-8">
@@ -84,7 +84,7 @@ export default function Home() {
       </section>
 
       {/* ルール */}
-      <section style={{ border: '3px solid #0a0a0a00', background: '#f7f4ee9f', padding: '0 20px 20px 20px', marginTop:'30px', position: 'relative' }}
+      <section style={{ border: '3px solid #0a0a0a00', background: '#e2e0db4b', padding: '0 20px 20px 20px', marginTop:'30px', position: 'relative' }}
         className="px-6 py-16">
         <div className="max-w-3xl mx-auto">
           <h2 className="title-manga text-4xl text-center mb-8">RULES</h2>
