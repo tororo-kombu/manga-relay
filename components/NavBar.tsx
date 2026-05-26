@@ -60,8 +60,7 @@ export default function NavBar() {
         transition: '0.3s ease',
         borderRadius: '15px',
         boxShadow: '0 4px 15px #00000034',
-        backgroundColor: '#ffffff83',
-        backdropFilter: 'blur(5px) contrast(0.4) brightness(1.4) saturate(2.0)',
+        backgroundColor: '#ffffff',
         fontFamily: "Noto Sans JP",
       }}>
 
@@ -98,8 +97,10 @@ export default function NavBar() {
               <Link key={tab.href} href={tab.href} className="flex-1 text-center py-3 font-bold text-sm tracking-widest transition-colors"
                 style={{
                   textDecoration: 'none',
-                  borderBottom: isActive ? '3px solid #0a0a0a' : '3px solid transparent',
-                  paddingTop: '3px',
+                  backgroundColor:isActive ? '#0a0a0a' : '#3a3a3a00',
+                  color: isActive? '#fff' : '#3a3a3a',
+                  border: '3px solid #ffffff',
+                  borderRadius: '100px',
                   fontWeight: "500"
                 }}>
                 {tab.label}
@@ -116,26 +117,33 @@ export default function NavBar() {
       }} onClick={() => setMenuOpen(false)}>
         <div style={{
           transform: menuOpen ? 'translateX(0px)' : 'translateX(280px)',
-          transition: '0.4s cubic-bezier(0.48, 0.12, 0.09, 1)',
+          transition: '0.3s',
           position: 'fixed', bottom: '12px', right: '8px', width: 260,
           height: 'calc(100% - 108px)',
           borderRadius: '15px',
           boxShadow: '0 4px 15px #00000034',
-          backgroundColor: '#ffffff83',
-          backdropFilter: 'blur(5px) contrast(0.4) brightness(1.4) saturate(2.0)',
-          padding: '20px 24px 24px',
+          backgroundColor: '#ffffff',
+          padding: '20px',
         }} onClick={(e) => e.stopPropagation()}>
 
           <div className="flex flex-col gap-4">
             {user ? (
               <>
-                <div style={{ height: '10px' }}></div>
-                <p className="text-xs text-gray-500 font-bold break-all">{user.email}</p>
-                <Link href="/history" onClick={() => setMenuOpen(false)}>
-                  <button className="btn-manga-outline w-full">投稿履歴</button>
-                </Link>
-                <div style={{ height: '10px' }}></div>
-                <button onClick={handleLogout} className="btn-manga w-full">
+                <p className="text-xs text-gray-500 font-bold break-all" style={{fontWeight:600}}>{user.email}</p>
+                <div className="menuBttomLink" style={{fontSize: '16px', lineHeight: '35px', width: 'calc(100% - 5px)'}}>
+                  {[
+                    { href:'/history', label:'投稿履歴', target:''},
+                  ].map((accountLink , i) => (
+                    <a key={i} href={accountLink.href} target={accountLink.target}>
+                      <div style={{width:'100%',position:'relative',fontWeight:400}}>
+                        {accountLink.label} <span style={{color:'#00000077',position:'absolute',right:3}}>&gt;</span>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+
+                <div style={{ height: '15px'}}></div>
+                <button onClick={handleLogout} className="btn-manga w-full" style={{borderRadius:'10px'}}>
                   ログアウト
                 </button>
               </>
@@ -143,21 +151,23 @@ export default function NavBar() {
               <>
                 <p className="text-sm font-bold text-gray-600">ログインすると投稿できます</p>
                 <Link href="/login" onClick={() => setMenuOpen(false)}>
-                  <button className="btn-manga w-full">ログイン･サインイン</button>
+                  <button className="btn-manga w-full" style={{borderRadius:'10px'}}>ログイン･サインイン</button>
                 </Link>
               </>
             )}
           </div>
-          <div className="menuBttomLink" style={{ position: 'absolute', bottom: '20px', fontSize: '16px', lineHeight: '35px' }}>
+          <div className="menuBttomLink" style={{ position: 'absolute', bottom: '20px', fontSize: '16px', lineHeight: '35px', width: 'calc(100% - 40px)'}}>
             {[
               { href:'/rule', label:'利用ルール', target:''},
               { href:'/privacy', label:'プライバシーポリシー', target:''},
               { href:'https://x.com/tororo___kombu', label:'開発者のX', target:'_brank'},
               { href:'https://github.com/tororo-kombu/manga-relay', label:'Github', target:'_brank'},
-            ].map((qa, i) => (
-              <div key={i}>
-                <a href={qa.href} target={qa.target}>{qa.label}</a><br/>
-              </div>
+            ].map((otherLink, i) => (
+              <a key={i} href={otherLink.href} target={otherLink.target}>
+                <div style={{width:'100%',position:'relative',fontWeight:400}}>
+                  {otherLink.label} <span style={{color:'#00000077',position:'absolute',right:3}}>&gt;</span>
+                </div>
+              </a>
             ))}
           </div>
         </div>

@@ -38,7 +38,7 @@ export default async function RecruitingPage() {
             const firstPanel = panels[0]
 
             return (
-              <Link key={manga.id} href={`/manga/${manga.id}`} style={{textDecoration:'none'}}>
+              <Link key={manga.id} href={`/manga/${manga.id}`} style={{textDecoration:'none', marginTop: "10px"}}>
                 <div className="relative cursor-pointer hover:bg-gray-50 transition-colors">
                   {/* タイトル */}
                   <div className="px-4 py-2">
